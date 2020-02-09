@@ -124,8 +124,11 @@ cards:
 
 ```
 
+### NOTE
 
+When changing the padding of the thumb. If you want for example padding on the sides (horizontal) you will have to triple the width of the thumb itself, this has something to do with the border styling. There is possibly a way around this, if I use some more time on the styling, but for now, this will have to do, since it serves the purpose I need it for. Plus if you just keep this in mind, there should be no trouble. But play around with it. This includes when wanting padding on top/bottom (vertical), you will have to change height of the thumb.
 
+For the colors, you can use HEX colors ('#111111'), color names supported by CSS ('red', 'blue', 'black', etc.) and I assume you can also use rgb ('rgb(255, 255, 255)') and rgba ('rgba(255, 255, 255, 0.5)'). rgba is used when you want to change the opacity, this is the last number in the comma seperated list, where 1 is full opacity and 0 is full transparency.
 
 
 
