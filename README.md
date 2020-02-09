@@ -25,3 +25,9 @@ Slider Card is a customizable card for light entity sliders, for the Home Assist
 | thumbColor | string | #969696 | Color of thumb |
 | thumbHorizontalPadding | string | 10px | Horizontal padding of the thumb |
 | thumbVerticalPadding | string | 20px | Vertical padding of thumb |
+
+## Installation
+
+### Step 1
+
+Copy `slider-card.js`
