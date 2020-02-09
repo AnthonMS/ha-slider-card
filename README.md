@@ -94,7 +94,7 @@ cards:
 
 #### Change Thumb Padding and Size
 
-![Change Thumb Height and Colors Config](/slider-card-captures/thumb-padding.JPG)
+![Change Thumb Height and Colors Config](/slider-card-captures/thumb-padding-2.JPG)
 
 ```yaml
 cards:
