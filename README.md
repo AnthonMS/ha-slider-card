@@ -9,8 +9,9 @@ Slider Card is a customizable card for light entity sliders, for the Home Assist
 - Customizable bar
 
 ### Future features (Maybe)
-- Customizable Percentage Text inside slider
-- Multiple entities (Right now you can only put one light entity in each card)
+- Customizable Percentage Text inside slider.
+- Customizable border radius of the slider.
+- Multiple entities (Right now you can only put one light entity in each card).
 
 ## Options
 | Name | Type | Default | Description |
