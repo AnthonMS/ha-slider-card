@@ -1,5 +1,5 @@
 # slider-card
-
+![Default Slider Config](/slider-card-captures/default.jpg)
 ## Description
 
 Slider Card is a customizable card for light entity sliders, for the Home Assistant Lovelace frontend.
@@ -55,7 +55,7 @@ Add a custom card to your `ui-lovelace.yaml`.
 
 #### Default
 
-![](/slider-card-captures/default.jpg)
+
 
 ```yaml
 card:
