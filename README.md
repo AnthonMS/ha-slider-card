@@ -57,17 +57,15 @@ Add a custom card to your `ui-lovelace.yaml`.
 
 #### Default
 
-![Default Slider Config](/slider-card-captures/default.JPG)
-
 ```yaml
 cards:
   - type: custom:slider-card
     entity: light.example
 ```
 
-#### Change Slider Height and Colors
+![Default Slider Config](/slider-card-captures/default.JPG)
 
-![Change Slider Height and Colors Config](/slider-card-captures/colors-height.JPG)
+#### Change Slider Height and Colors
 
 ```yaml
 cards:
@@ -78,9 +76,9 @@ cards:
       secondarySliderColor: 'red'
 ```
 
-#### Change Thumb Size and Colors
+![Change Slider Height and Colors Config](/slider-card-captures/colors-height.JPG)
 
-![Change Thumb Height and Colors Config](/slider-card-captures/thumb-colors-height.JPG)
+#### Change Thumb Size and Colors
 
 ```yaml
 cards:
@@ -94,9 +92,9 @@ cards:
     thumbColor: 'black'
 ```
 
-#### Change Thumb Padding and Size
+![Change Thumb Height and Colors Config](/slider-card-captures/thumb-colors-height.JPG)
 
-![Change Thumb Height and Colors Config](/slider-card-captures/thumb-padding-2.JPG)
+#### Change Thumb Padding and Size
 
 ```yaml
 cards:
@@ -125,6 +123,8 @@ cards:
     thumbVerticalPadding: '0px'
 
 ```
+
+![Change Thumb Height and Colors Config](/slider-card-captures/thumb-padding-2.JPG)
 
 ### NOTE
 
