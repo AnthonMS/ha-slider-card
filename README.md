@@ -53,6 +53,14 @@ Add a custom card to your `ui-lovelace.yaml`.
 
 ## Examples
 
+#### Default
+
+```yaml
+card:
+  - type: custom:slider-card
+    entity: light.example
+```
+
 
 
 
