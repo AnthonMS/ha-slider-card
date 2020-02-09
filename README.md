@@ -30,4 +30,55 @@ Slider Card is a customizable card for light entity sliders, for the Home Assist
 
 ### Step 1
 
-Copy `slider-card.js`
+Copy `slider-card.js` to `<config directory>/www/slider-card.js`.
+
+### Step 2
+
+Add `slider-card` resource to `ui-lovelace.yaml`.
+
+```yaml
+resources:
+  - url: /local/slider-card.js
+    type: module
+```
+
+### Step 3
+
+Add a custom card to your `ui-lovelace.yaml`.
+
+```yaml
+- type: custom:slider-card
+  entity: light.example
+```
+
+## Examples
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
