@@ -92,7 +92,37 @@ cards:
     thumbColor: 'black'
 ```
 
+#### Change Thumb Padding and Size
 
+![Change Thumb Height and Colors Config](/slider-card-captures/thumb-padding.JPG)
+
+```yaml
+cards:
+###########  LEFT SLIDER  ############
+  - type: custom:slider-card
+    entity: light.dinner_table_light
+    brightnessHeight: '30px'
+    mainSliderColor: 'green'
+    secondarySliderColor: 'red'
+    thumbWidth: '0px'
+    thumbHeight: '30px'
+    thumbColor: 'pink'
+    thumbHorizontalPadding: '0px'
+    thumbVerticalPadding: '0px'
+
+###########  RIGHT SLIDER  ############
+  - type: custom:slider-card
+    entity: light.sofa_light
+    brightnessHeight: '30px'
+    mainSliderColor: 'blue'
+    secondarySliderColor: 'darkblue'
+    thumbWidth: '5px'
+    thumbHeight: '30px'
+    thumbColor: 'black'
+    thumbHorizontalPadding: '0px'
+    thumbVerticalPadding: '0px'
+
+```
 
 
 
