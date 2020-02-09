@@ -3,6 +3,7 @@
 ## Description
 
 Slider Card is a customizable card for light entity sliders, for the Home Assistant Lovelace frontend.
+**Please read the notes at the bottom of this readme, there are some important styling tips, because the padding on the thumb works in mysterious ways (Using border styling)**
 
 ### Features
 - Customizable bar
