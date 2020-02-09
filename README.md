@@ -13,6 +13,10 @@ Slider Card is a customizable card for light entity sliders, for the Home Assist
 - Customizable border radius of the slider.
 - Multiple entities (Right now you can only put one light entity in each card).
 
+### My Setup Using This
+
+![Example Setup](/slider-card-captures/my-use-case.JPG)
+
 ## Options
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
