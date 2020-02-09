@@ -55,7 +55,7 @@ Add a custom card to your `ui-lovelace.yaml`.
 
 #### Default
 
-![](slider-card-captures/default.jpg)
+![](/slider-card-captures/default.jpg)
 
 ```yaml
 card:
