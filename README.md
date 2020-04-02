@@ -22,8 +22,8 @@ Slider Card is a customizable card for light entity sliders, for the Home Assist
 | ---- | ---- | ------- | ----------- |
 | type | string | **Required** | `custom:slider-card` |
 | entity | string | **Required** | `light.living_room` |
-| brightnessWidth | string | 100% | Width of slider |
-| brightnessHeight | string | 50px | Height of slider |
+| width | string | 100% | Width of slider |
+| height | string | 50px | Height of slider |
 | mainSliderColor | string | #636363 | Main color of slider |
 | secondarySliderColor | string | #4d4d4d | Secondary color of slider |
 | thumbWidth | string | 25px | Width of thumb |
@@ -75,7 +75,7 @@ cards:
 cards:
     - type: custom:slider-card
       entity: light.dinner_table_light
-      brightnessHeight: '30px'
+      height: '30px'
       mainSliderColor: 'green'
       secondarySliderColor: 'red'
 ```
@@ -88,7 +88,7 @@ cards:
 cards:
   - type: custom:slider-card
     entity: light.dinner_table_light
-    brightnessHeight: '30px'
+    height: '30px'
     mainSliderColor: 'blue'
     secondarySliderColor: 'darkblue'
     thumbWidth: '25px'
@@ -105,7 +105,7 @@ cards:
 ###########  LEFT SLIDER  ############
   - type: custom:slider-card
     entity: light.dinner_table_light
-    brightnessHeight: '30px'
+    height: '30px'
     mainSliderColor: 'green'
     secondarySliderColor: 'red'
     thumbWidth: '0px'
@@ -117,7 +117,7 @@ cards:
 ###########  RIGHT SLIDER  ############
   - type: custom:slider-card
     entity: light.sofa_light
-    brightnessHeight: '30px'
+    height: '30px'
     mainSliderColor: 'blue'
     secondarySliderColor: 'darkblue'
     thumbWidth: '5px'
