@@ -19,8 +19,8 @@ class SliderCard extends LitElement {
   
   render() {
     // Size Variables
-    var brightnessWidth = this.config.brightnessWidth ? this.config.brightnessWidth : "100%";
-    var brightnessHeight = this.config.brightnessHeight ? this.config.brightnessHeight : "50px";
+    var width = this.config.width ? this.config.width : "100%";
+    var height = this.config.height ? this.config.height : "50px";
     // Slider Background Color Variables
     var mainSliderColor = this.config.mainSliderColor ? this.config.mainSliderColor : "#636363";
     var secondarySliderColor = this.config.secondarySliderColor ? this.config.secondarySliderColor : "#4d4d4d";
@@ -33,11 +33,22 @@ class SliderCard extends LitElement {
 
     var entity = this.config.entity;
     var entityState = this.hass.states[entity]
+
+    var isLight = false;
+    var isInputNumber = false;
+
+    
+    if (this.config.entity.includes("light.")) {
+      isLight = true;
+    }
+    else if (this.config.entity.includes("input_number.")) {
+      isInputNumber = true;
+    }
     
     var styleStr = `
-      --slider-width: ${brightnessWidth};
-      --slider-width-inverse: -${brightnessWidth};
-      --slider-height: ${brightnessHeight};
+      --slider-width: ${width};
+      --slider-width-inverse: -${width};
+      --slider-height: ${height};
       --slider-main-color: ${mainSliderColor};
       --slider-secondary-color: ${secondarySliderColor};
       
@@ -47,17 +58,35 @@ class SliderCard extends LitElement {
       --thumb-horizontal-padding: ${thumbHorizontalPadding};
       --thumb-vertical-padding: ${thumbVerticalPadding};
     `;
-// <div class="brightness">${entityState.state === "off" ? 0 : Math.round(entityState.attributes.brightness/2.55)+'%'}</div>
-    return html`
-        <ha-card>
-          <div class="slider-container" style="--slider-height: ${brightnessHeight};">
-            <input name="foo" type="range" class="${entityState.state}" style="${styleStr}" .value="${entityState.state === "off" ? 0 : Math.round(entityState.attributes.brightness/2.55)}" @change=${e => this._setBrightness(entityState, e.target.value)}>
-          </div>
-        </ha-card>
-    `;
+    if (isLight) {
+      return html`
+          <ha-card>
+            <div class="slider-container" style="--slider-height: ${height};">
+              <input name="foo" type="range" class="${entityState.state}" style="${styleStr}" .value="${entityState.state === "off" ? 0 : Math.round(entityState.attributes.brightness/2.55)}" @change=${e => this._setBrightness(entityState, e.target.value)}>
+            </div>
+          </ha-card>
+      `;
+    }
+    
+    if (isInputNumber) {
+      return html`
+          <ha-card>
+            <div class="slider-container" style="--slider-height: ${height};">
+              <input name="foo" type="range" class="${entityState.state}" style="${styleStr}" .value="${entityState.state}" @change=${e => this._setInputNumber(entityState, e.target.value)}>
+            </div>
+          </ha-card>
+      `;
+    }
   }
 
   updated() {}
+
+  _setInputNumber(state, number) {
+    this.hass.callService("input_number", "set_value", {
+        entity_id: state.entity_id,
+        value: number
+    });
+  }
   
   _setBrightness(state, value) {
     this.hass.callService("homeassistant", "turn_on", {
@@ -80,11 +109,16 @@ class SliderCard extends LitElement {
     if (!config.entity) {
       throw new Error("You need to define entity");
     }
+
+    if (!config.entity.includes("input_number.") && !config.entity.includes("light.")) {
+      throw new Error("Entity has to be either light or input_number");
+    }
+
     this.config = config;
   }
 
   getCardSize() {
-    return 2;
+    return 0;
   }
   
   static get styles() {
