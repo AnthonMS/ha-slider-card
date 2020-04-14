@@ -43,7 +43,17 @@ Copy `slider-card.js` to `<config directory>/www/slider-card.js`.
 
 ### Step 2
 
+#### OLD
 Add `slider-card` resource to `ui-lovelace.yaml`.
+
+```yaml
+resources:
+  - url: /local/slider-card.js
+    type: module
+```
+
+#### NEW
+Add `slider-card` as module through front-end. or if using yaml-mode add `slider-card` resource to `configuration.yaml`.
 
 ```yaml
 resources:
