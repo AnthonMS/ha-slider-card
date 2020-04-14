@@ -6,7 +6,9 @@ Slider Card is a customizable card for light & input_number entity sliders, for 
 **Please read the notes at the bottom of this readme, there are some important styling tips, because the padding on the thumb works in mysterious ways (Using border styling)**
 
 ### Features
-- Customizable bar
+- Customizable slider card for lights and input_numbers
+- It can handle both brightness and warmth of light
+- It can handle custom min and max for input_number
 
 ### Future features (Maybe)
 - Customizable Percentage Text inside slider.
@@ -22,6 +24,7 @@ Slider Card is a customizable card for light & input_number entity sliders, for 
 | ---- | ---- | ------- | ----------- |
 | type | string | **Required** | `custom:slider-card` |
 | entity | string | **Required** | `light.living_room` |
+| function | string | "Brightness" | Function of the slider (Brightness/Warmth) |
 | width | string | 100% | Width of slider |
 | height | string | 50px | Height of slider |
 | mainSliderColor | string | #636363 | Main color of slider |
@@ -65,6 +68,15 @@ Add a custom card to your `ui-lovelace.yaml`.
 cards:
   - type: custom:slider-card
     entity: light.example
+```
+
+#### Adjust Warmth of Light
+
+```yaml
+cards:
+  - type: custom:slider-card
+    entity: light.example
+    function: "Warmth"
 ```
 
 ![Default Slider Config](/slider-card-captures/default.JPG)
