@@ -37,7 +37,7 @@ class SliderCard extends LitElement {
     var isLight = false;
     var isInputNumber = false;
 
-    
+    // Check if entity is light or input_number
     if (this.config.entity.includes("light.")) {
       isLight = true;
     }
@@ -58,21 +58,33 @@ class SliderCard extends LitElement {
       --thumb-horizontal-padding: ${thumbHorizontalPadding};
       --thumb-vertical-padding: ${thumbVerticalPadding};
     `;
+
     if (isLight) {
-      return html`
-          <ha-card>
-            <div class="slider-container" style="--slider-height: ${height};">
-              <input name="foo" type="range" class="${entityState.state}" style="${styleStr}" .value="${entityState.state === "off" ? 0 : Math.round(entityState.attributes.brightness/2.55)}" @change=${e => this._setBrightness(entityState, e.target.value)}>
-            </div>
-          </ha-card>
-      `;
+      if (this.config.function == "Warmth") {
+        return html`
+            <ha-card>
+              <div class="slider-container" style="--slider-height: ${height};">
+                <input name="foo" type="range" class="${entityState.state}" style="${styleStr}" .value="${entityState.state === "off" ? 0 : entityState.attributes.color_temp}" min="${entityState.attributes.min_mireds}" max="${entityState.attributes.max_mireds}" @change=${e => this._setWarmth(entityState, e.target.value)}>
+              </div>
+            </ha-card>
+        `;
+      }
+      else {
+        return html`
+            <ha-card>
+              <div class="slider-container" style="--slider-height: ${height};">
+                <input name="foo" type="range" class="${entityState.state}" style="${styleStr}" .value="${entityState.state === "off" ? 0 : Math.round(entityState.attributes.brightness/2.55)}" @change=${e => this._setBrightness(entityState, e.target.value)}>
+              </div>
+            </ha-card>
+        `;
+      }
     }
     
     if (isInputNumber) {
       return html`
           <ha-card>
             <div class="slider-container" style="--slider-height: ${height};">
-              <input name="foo" type="range" class="${entityState.state}" style="${styleStr}" .value="${entityState.state}" @change=${e => this._setInputNumber(entityState, e.target.value)}>
+              <input name="foo" type="range" class="${entityState.state}" style="${styleStr}" .value="${entityState.state}" min="${entityState.attributes.min}" max="${entityState.attributes.max}" @change=${e => this._setInputNumber(entityState, e.target.value)}>
             </div>
           </ha-card>
       `;
@@ -86,6 +98,8 @@ class SliderCard extends LitElement {
         entity_id: state.entity_id,
         value: number
     });
+    // console.log("Setting input_number...");
+    // console.log(state);
   }
   
   _setBrightness(state, value) {
@@ -93,6 +107,17 @@ class SliderCard extends LitElement {
         entity_id: state.entity_id,
         brightness: value * 2.55
     });
+    // console.log("Setting brightness...");
+    // console.log(state);
+  }
+
+  _setWarmth(state, value) {
+    this.hass.callService("homeassistant", "turn_on", {
+      entity_id: state.entity_id,
+      color_temp: value
+    });
+    // console.log("Setting warmth...");
+    // console.log(state.attributes.color_temp);
   }
   
   _switch(state) {
@@ -113,7 +138,7 @@ class SliderCard extends LitElement {
     if (!config.entity.includes("input_number.") && !config.entity.includes("light.")) {
       throw new Error("Entity has to be either light or input_number");
     }
-
+    
     this.config = config;
   }
 
