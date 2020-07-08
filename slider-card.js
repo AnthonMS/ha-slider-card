@@ -31,6 +31,7 @@ class SliderCard extends LitElement {
     var thumbHorizontalPadding = this.config.thumbHorizontalPadding ? this.config.thumbHorizontalPadding : "10px";
     var thumbVerticalPadding = this.config.thumbVerticalPadding ? this.config.thumbVerticalPadding : "20px";
 
+
     var entity = this.config.entity;
     var entityState = this.hass.states[entity]
 
@@ -43,6 +44,7 @@ class SliderCard extends LitElement {
     }
     else if (this.config.entity.includes("input_number.")) {
       isInputNumber = true;
+      var step = this.config.step ? this.config.step: entityState.attributes.step;
     }
     
     var styleStr = `
@@ -84,7 +86,7 @@ class SliderCard extends LitElement {
       return html`
           <ha-card>
             <div class="slider-container" style="--slider-height: ${height};">
-              <input name="foo" type="range" class="${entityState.state}" style="${styleStr}" .value="${entityState.state}" min="${entityState.attributes.min}" max="${entityState.attributes.max}" @change=${e => this._setInputNumber(entityState, e.target.value)}>
+              <input name="foo" type="range" class="${entityState.state}" style="${styleStr}" .value="${entityState.state}" min="${entityState.attributes.min}" max="${entityState.attributes.max}" step="${step}" @change=${e => this._setInputNumber(entityState, e.target.value)}>
             </div>
           </ha-card>
       `;
