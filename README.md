@@ -25,6 +25,7 @@ Everything under function in the options table is css styling, so it is possible
 | ---- | ---- | ------- | ----------- |
 | type | string | **Required** | `custom:slider-card` |
 | entity | string | **Required** | `light.living_room` |
+| step | string | "1" | Number of steps to take |
 | function | string | "Brightness" | Function of the slider (Brightness/Warmth) |
 | width | string | 100% | Width of slider |
 | height | string | 50px | Height of slider |
@@ -88,6 +89,21 @@ cards:
   - type: custom:slider-card
     entity: light.example
     function: "Warmth"
+```
+
+#### use for Input Number
+
+```yaml
+cards:
+  - type: custom:slider-card
+    entity: input_number.example
+```
+
+```yaml
+cards:
+  - type: custom:slider-card
+    entity: input_number.example
+    step: "10"
 ```
 
 ![Default Slider Config](/slider-card-captures/default.JPG)
