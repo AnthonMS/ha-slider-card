@@ -41,6 +41,7 @@ class SliderCard extends LitElement {
     // Check if entity is light or input_number
     if (this.config.entity.includes("light.")) {
       isLight = true;
+      var step = this.config.step ? this.config.step: "1";
     }
     else if (this.config.entity.includes("input_number.")) {
       isInputNumber = true;
@@ -66,7 +67,7 @@ class SliderCard extends LitElement {
         return html`
             <ha-card>
               <div class="slider-container" style="--slider-height: ${height};">
-                <input name="foo" type="range" class="${entityState.state}" style="${styleStr}" .value="${entityState.state === "off" ? 0 : entityState.attributes.color_temp}" min="${entityState.attributes.min_mireds}" max="${entityState.attributes.max_mireds}" @change=${e => this._setWarmth(entityState, e.target.value)}>
+                <input name="foo" type="range" class="${entityState.state}" style="${styleStr}" .value="${entityState.state === "off" ? 0 : entityState.attributes.color_temp}" min="${entityState.attributes.min_mireds}" max="${entityState.attributes.max_mireds}" step="${step}" @change=${e => this._setWarmth(entityState, e.target.value)}>
               </div>
             </ha-card>
         `;
@@ -75,7 +76,7 @@ class SliderCard extends LitElement {
         return html`
             <ha-card>
               <div class="slider-container" style="--slider-height: ${height};">
-                <input name="foo" type="range" class="${entityState.state}" style="${styleStr}" .value="${entityState.state === "off" ? 0 : Math.round(entityState.attributes.brightness/2.55)}" @change=${e => this._setBrightness(entityState, e.target.value)}>
+                <input name="foo" type="range" class="${entityState.state}" style="${styleStr}" .value="${entityState.state === "off" ? 0 : Math.round(entityState.attributes.brightness/2.55)}" step="${step}" @change=${e => this._setBrightness(entityState, e.target.value)}>
               </div>
             </ha-card>
         `;
