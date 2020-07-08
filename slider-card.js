@@ -21,6 +21,7 @@ class SliderCard extends LitElement {
     // Size Variables
     var width = this.config.width ? this.config.width : "100%";
     var height = this.config.height ? this.config.height : "50px";
+    var radius = this.config.radius ? this.config.radius : "4px";
     // Slider Background Color Variables
     var mainSliderColor = this.config.mainSliderColor ? this.config.mainSliderColor : "#636363";
     var secondarySliderColor = this.config.secondarySliderColor ? this.config.secondarySliderColor : "#4d4d4d";
@@ -54,6 +55,7 @@ class SliderCard extends LitElement {
       --slider-height: ${height};
       --slider-main-color: ${mainSliderColor};
       --slider-secondary-color: ${secondarySliderColor};
+      --slider-radius: ${radius};
       
       --thumb-width: ${thumbWidth};
       --thumb-height: ${thumbHeight};
@@ -159,7 +161,7 @@ class SliderCard extends LitElement {
         .slider-container input[type="range"] {
             outline: 0;
             border: 0;
-            border-radius: 4px;
+            border-radius: var(--slider-radius);
             width: var(--slider-width);
             margin: 0;
             transition: box-shadow 0.2s ease-in-out;
