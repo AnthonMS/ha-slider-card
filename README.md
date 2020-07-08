@@ -25,7 +25,7 @@ Everything under function in the options table is css styling, so it is possible
 | ---- | ---- | ------- | ----------- |
 | type | string | **Required** | `custom:slider-card` |
 | entity | string | **Required** | `light.living_room` |
-| step | string | "1" | Number of steps to take |
+| step | string | "1" | Number of steps to take (For input number, if step is not specified, it will use step from attributes.) |
 | function | string | "Brightness" | Function of the slider (Brightness/Warmth) |
 | width | string | 100% | Width of slider |
 | height | string | 50px | Height of slider |
