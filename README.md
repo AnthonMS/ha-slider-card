@@ -13,7 +13,6 @@ Everything under function in the options table is css styling, so it is possible
 
 ### Future features (Maybe)
 - Customizable Percentage Text inside slider.
-- Customizable border radius of the slider.
 - Multiple entities (Right now you can only put one light entity in each card).
 
 ### My Setup Using This
@@ -26,6 +25,7 @@ Everything under function in the options table is css styling, so it is possible
 | type | string | **Required** | `custom:slider-card` |
 | entity | string | **Required** | `light.living_room` |
 | step | string | "1" | Number of steps to take (For input number, if step is not specified, it will use step from attributes.) |
+| radius | string | "4px" | Border radius of slider. |
 | function | string | "Brightness" | Function of the slider (Brightness/Warmth) |
 | width | string | 100% | Width of slider |
 | height | string | 50px | Height of slider |
