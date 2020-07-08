@@ -14,6 +14,7 @@ Everything under function in the options table is css styling, so it is possible
 ### Future features (Maybe)
 - Customizable Percentage Text inside slider.
 - Multiple entities (Right now you can only put one light entity in each card).
+- **If you would like a new feature, please feel free to create an issue asking for it.**
 
 ### My Setup Using This
 
