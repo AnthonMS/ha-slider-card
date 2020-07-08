@@ -9,7 +9,7 @@ Everything under function in the options table is css styling, so it is possible
 ### Features
 - Customizable slider card for lights and input_numbers
 - It can handle both brightness and warmth of light
-- It can handle custom min and max for input_number
+- It can handle custom min, max and step for input_number
 
 ### Future features (Maybe)
 - Customizable Percentage Text inside slider.
