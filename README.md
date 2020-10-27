@@ -25,7 +25,7 @@ Everything under function in the options table is css styling, so it is possible
 | ---- | ---- | ------- | ----------- |
 | type | string | **Required** | `custom:slider-card` |
 | entity | string | **Required** | `light.living_room` |
-| step | string | "1" | Number of steps to take (For input number, if step is not specified, it will use step from attributes.) |
+| step | string | "1" | Number of steps to take (For input number, if step is not specified, it will use step from attributes.) (For media_player, if step is not specified it will step by 0.01. (It will actually step by 1, but it will convert 27 to 0.27. So if you set a custom step, set it between 0 and 100.)) |
 | radius | string | "4px" | Border radius of slider. |
 | function | string | "Brightness" | Function of the slider (Brightness/Warmth) |
 | width | string | 100% | Width of slider |
