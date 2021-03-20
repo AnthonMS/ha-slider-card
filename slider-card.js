@@ -15,6 +15,7 @@ static get properties() {
 
 constructor() {
   super();
+  console.log("SLIDER-CARD V10 INSTALLED--------------------------------------------------------------");
 }
 
 render() {
@@ -31,6 +32,18 @@ render() {
   var thumbColor = this.config.thumbColor ? this.config.thumbColor : "#969696";
   var thumbHorizontalPadding = this.config.thumbHorizontalPadding ? this.config.thumbHorizontalPadding : "10px";
   var thumbVerticalPadding = this.config.thumbVerticalPadding ? this.config.thumbVerticalPadding : "20px";
+  // var horizontal = this.config.horizontal ? this.config.horizontal : true;
+  // var vertical = this.config.vertical ? this.config.vertical : false;
+
+  // if (vertical == true || horizontal == false) {
+  //   horizontal = false;
+  //   vertical = true;
+  // }
+  // // else if (horizontal == false) {
+  // //   vertical = true;
+  // // }
+  // // console.log(horizontal);
+  // // console.log(vertical);
 
 
   var entity = this.config.entity;
@@ -39,6 +52,7 @@ render() {
   var isLight = false;
   var isInputNumber = false;
   var isMediaPlayer= false;
+  var isCover = false;
 
   // Check if entity is light or input_number
   if (this.config.entity.includes("light.")) {
@@ -52,7 +66,10 @@ render() {
   else if (this.config.entity.includes("media_player.")) {
     isMediaPlayer = true;
     var step = this.config.step ? this.config.step: "1";
-    console.log();
+  }
+  else if (this.config.entity.includes("cover.")) {
+    isCover = true;
+    var step = this.config.step ? this.config.step: "1";
   }
   
   var styleStr = `
@@ -113,9 +130,29 @@ render() {
         </ha-card>
     `;
   }
+
+  if (isCover) {
+    return html`
+        <ha-card>
+          <div class="slider-container" style="--slider-height: ${height};">
+            <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.attributes.current_position}" min="0" max="100" step="${step}" @change=${e => this._setCover(entityClass, e.target.value)}>
+          </div>
+        </ha-card>
+    `;
+  }
 }
 
 updated() {}
+
+
+_setCover(entityClass, value) {
+  console.log("Setting Cover to: " + value);
+  console.log("From Position: " + entityClass.attributes.current_position);
+  this.hass.callService("cover", "set_cover_position", {
+      entity_id: entityClass.entity_id,
+      position: value
+  });
+}
 
 _setMediaVolume(entityClass, value) {
   if (value === 100) {
@@ -170,8 +207,8 @@ setConfig(config) {
     throw new Error("You need to define entity");
   }
 
-  if (!config.entity.includes("input_number.") && !config.entity.includes("light.") && !config.entity.includes("media_player.")) {
-    throw new Error("Entity has to be a light, input_number or media_player");
+  if (!config.entity.includes("input_number.") && !config.entity.includes("light.") && !config.entity.includes("media_player.") && !config.entity.includes("cover.")) {
+    throw new Error("Entity has to be a light, input_number, media_player or a cover.");
   }
   
   this.config = config;
