@@ -7,13 +7,14 @@ Slider Card is a customizable card for light, input_number & media_player volume
 Everything under function in the options table is css styling, so it is possible to use any of the supported ways of setting styles. For example for width, height and paddings you can use '%', 'px', 'rem' and so on. And the same for colors, you can use hex, rgb and named.
 
 ### Features
-- Customizable slider card for lights and input_numbers
+- Customizable slider card for lights, input_numbers, media_players and covers
 - It can handle both brightness and warmth of light
 - It can handle custom min, max and step for input_number
 
 ### Future features (Maybe)
 - Customizable Percentage Text inside slider.
 - Multiple entities (Right now you can only put one light entity in each card).
+- Vertical Slider
 - **If you would like a new feature, please feel free to create an issue asking for it.**
 
 ### My Setup Using This
