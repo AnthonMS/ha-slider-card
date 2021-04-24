@@ -1,4 +1,5 @@
 {
   "name": "slider-card",
-  "render_readme": true
+  "render_readme": true,
+  "domains": ["media_player", "light", "fan", "cover", "input_number"]
 }
