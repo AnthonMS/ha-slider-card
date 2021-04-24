@@ -30,14 +30,12 @@ Everything under function in the options table is css styling, so it is possible
 | function | string | "Brightness" | Function of the slider (Brightness/Warmth) |
 | width | string | 100% | Width of slider |
 | height | string | 50px | Height of slider |
-
 | top | string | 0px | Top position of slider |
 | bottom | string | 0px | Bottom position of slider |
 | right | string | 0px | Right position of slider |
 | left | string | 0px | Left position of slider |
 | rotate | string | 0 | Rotation in degrees. Just put 90, if you want to rotate it 90 degrees |
 | containerHeight | string | 50px | Height of container slider is in. This is used if you want vertical slider |
-
 | mainSliderColor | string | #636363 | Main color of slider |
 | secondarySliderColor | string | #4d4d4d | Secondary color of slider |
 | thumbWidth | string | 25px | Width of thumb |
