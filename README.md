@@ -58,7 +58,7 @@ Add this in config and restart HA.
 lovelace:
   ...
   resources:
-    - url: /hacsfiles/slider-card/slider-card.js
+    - url: /hacsfiles/ha-slider-card/slider-card.js
       type: module
 ```
 
