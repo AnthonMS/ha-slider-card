@@ -44,7 +44,25 @@ Everything under function in the options table is css styling, so it is possible
 | thumbHorizontalPadding | string | 10px | Horizontal padding of the thumb |
 | thumbVerticalPadding | string | 20px | Vertical padding of thumb |
 
-## Installation
+## Installation HACS
+
+### Step 1
+
+Add this repository as a custom Lovelace repository in HACS.
+
+### Step 2
+
+Add this in config and restart HA.
+
+```yaml
+lovelace:
+  ...
+  resources:
+    - url: /hacsfiles/slider-card/slider-card.js
+      type: module
+```
+
+## Installation Manual
 
 ### Step 1
 
