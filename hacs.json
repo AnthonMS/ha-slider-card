@@ -1,5 +1,7 @@
 {
-  "name": "slider-card",
+  "name": "Slider Card",
+  "content_in_root": true,
+  "filename": "slider-card.js",
   "render_readme": true,
   "domains": ["media_player", "light", "fan", "cover", "input_number"]
 }
