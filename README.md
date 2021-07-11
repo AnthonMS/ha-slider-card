@@ -38,11 +38,14 @@ Everything under function in the options table is css styling, so it is possible
 | left | string | 0px | Left position of slider |
 | rotate | string | 0 | Rotation in degrees. Just put 90, if you want to rotate it 90 degrees |
 | containerHeight | string | 50px | Height of container slider is in. This is used if you want vertical slider |
-| mainSliderColor | string | #636363 | Main color of slider |
+| mainSliderColor | string | var(--accent-color) | Main color of slider |
+| mainSliderColorOff | string | #636363 | Main color of slider when inactive |
 | secondarySliderColor | string | #4d4d4d | Secondary color of slider |
+| secondarySliderColorOff | string | #4d4d4d | Secondary color of slider when inactive |
 | thumbWidth | string | 25px | Width of thumb |
 | thumbHeight | string | 80px | Height of thumb |
-| thumbColor | string | #969696 | Color of thumb |
+| thumbColor | string | #FFFFFF | Color of thumb |
+| thumbColorOff | string | #969696 | Color of thumb when inactive |
 | thumbHorizontalPadding | string | 10px | Horizontal padding of the thumb |
 | thumbVerticalPadding | string | 20px | Vertical padding of thumb |
 
@@ -201,24 +204,3 @@ cards:
 When changing the padding of the thumb. If you want for example padding on the sides (horizontal) you will have to triple the width of the thumb itself, this has something to do with the border styling. There is possibly a way around this, if I use some more time on the styling, but for now, this will have to do, since it serves the purpose I need it for. Plus if you just keep this in mind, there should be no trouble. But play around with it. This includes when wanting padding on top/bottom (vertical), you will have to change height of the thumb.
 
 For the colors, you can use HEX colors ('#111111'), color names supported by CSS ('red', 'blue', 'black', etc.) and I assume you can also use rgb ('rgb(255, 255, 255)') and rgba ('rgba(255, 255, 255, 0.5)'). rgba is used when you want to change the opacity, this is the last number in the comma seperated list, where 1 is full opacity and 0 is full transparency.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
