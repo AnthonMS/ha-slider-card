@@ -20,6 +20,9 @@ Everything under function in the options table is css styling, so it is possible
 
 ![Example Setup](/slider-card-captures/my-use-case.JPG)
 
+### Demo
+![Example](//slider-card-captures/demo.gif)
+
 ## Options
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
@@ -198,6 +201,22 @@ cards:
 ```
 
 ![Change Thumb Height and Colors Config](/slider-card-captures/thumb-padding-2.JPG)
+
+#### Change Active and Inactive Colors Config
+
+```yaml
+cards:
+  - type: custom:slider-card
+    entity: light.dinner_table_light
+    mainColor: red
+    mainColorOff: darkred
+    secondarySliderColor: blue
+    secondarySliderColor: darkblue
+    thumbColor: white
+    thumbColorOff: black
+```
+
+![Change Active and Inactive Colors Config](/slider-card-captures/thumb-colors-change.gif)
 
 ### NOTE
 
