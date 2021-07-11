@@ -94,14 +94,20 @@ render() {
     --slider-width: ${width};
     --slider-width-inverse: -${width};
     --slider-height: ${height};
-    --slider-main-color: ${mainSliderColor};
-    --slider-secondary-color: ${secondarySliderColor};
+    --slider-main-color: ${(entityClass.state === "off" || entityClass.state == undefined) ? "var(--slider-main-color-off)" : "var(--slider-main-color-on)"};
+    --slider-main-color-on: ${mainSliderColor};
+    --slider-main-color-off: ${mainSliderColorOff};
+    --slider-secondary-color: ${(entityClass.state === "off" || entityClass.state == undefined) ? "var(--slider-secondary-color-off)" : "var(--slider-secondary-color-on)"};
+    --slider-secondary-color-on: ${secondarySliderColor};
+    --slider-secondary-color-off: ${secondarySliderColorOff};
     --slider-radius: ${radius};
     --border: ${border};
     
     --thumb-width: ${thumbWidth};
     --thumb-height: ${thumbHeight};
-    --thumb-color: ${thumbColor};
+    --thumb-color: ${(entityClass.state === "off" || entityClass.state == undefined) ? "var(--thumb-color-off)" : "var(--thumb-color-on)"};
+    --thumb-color-on: ${thumbColor};
+    --thumb-color-off: ${thumbColorOff};
     --thumb-horizontal-padding: ${thumbHorizontalPadding};
     --thumb-vertical-padding: ${thumbVerticalPadding};
 
