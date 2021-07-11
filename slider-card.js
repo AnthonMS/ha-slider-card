@@ -175,7 +175,7 @@ render() {
     return html`
         <ha-card>
           <div class="slider-container" style="${styleStr}">
-            <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.attributes.current_position}" min="0" max="100" step="${step}" @change=${e => this._setFan(entityClass, e.target.value)}>
+            <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.attributes.percentage}" min="0" max="100" step="${step}" @change=${e => this._setFan(entityClass, e.target.value)}>
           </div>
         </ha-card>
     `;
