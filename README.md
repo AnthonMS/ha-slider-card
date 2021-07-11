@@ -21,7 +21,7 @@ Everything under function in the options table is css styling, so it is possible
 ![Example Setup](/slider-card-captures/my-use-case.JPG)
 
 ### Demo
-![Example](//slider-card-captures/demo.gif)
+![Example](//slider-card-captures/ha-slider-card-demo.gif)
 
 ## Options
 | Name | Type | Default | Description |
