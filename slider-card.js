@@ -35,13 +35,16 @@ render() {
     rotate = rotate + "deg";
   }
   // Slider Background Color Variables
-  var mainSliderColor = this.config.mainSliderColor ? this.config.mainSliderColor : "#636363";
+  var mainSliderColor = this.config.mainSliderColor ? this.config.mainSliderColor : "var(--accent-color)";
   var secondarySliderColor = this.config.secondarySliderColor ? this.config.secondarySliderColor : "#4d4d4d";
+  var mainSliderColorOff = this.config.mainSliderColor ? this.config.mainSliderColor : "#636363";
+  var secondarySliderColorOff = this.config.secondarySliderColor ? this.config.secondarySliderColor : "#4d4d4d";
   var border = this.config.border ? this.config.border : "0";
   // Slider Thumb Variables
   var thumbWidth = this.config.thumbWidth ? this.config.thumbWidth : "25px";
   var thumbHeight = this.config.thumbHeight ? this.config.thumbHeight : "80px";
-  var thumbColor = this.config.thumbColor ? this.config.thumbColor : "#969696";
+  var thumbColor = this.config.thumbColor ? this.config.thumbColor : "#FFFFFF";
+  var thumbColorOff = this.config.thumbColor ? this.config.thumbColor : "#969696";
   var thumbHorizontalPadding = this.config.thumbHorizontalPadding ? this.config.thumbHorizontalPadding : "10px";
   var thumbVerticalPadding = this.config.thumbVerticalPadding ? this.config.thumbVerticalPadding : "20px";
   var thumbTop = this.config.thumpTop ? this.config.thumpTop : "calc((var(--slider-width) - var(--thumb-height)) / 2)";
@@ -91,14 +94,20 @@ render() {
     --slider-width: ${width};
     --slider-width-inverse: -${width};
     --slider-height: ${height};
-    --slider-main-color: ${mainSliderColor};
-    --slider-secondary-color: ${secondarySliderColor};
+    --slider-main-color: ${(entityClass.state === "off" || entityClass.state == undefined) ? "var(--slider-main-color-off)" : "var(--slider-main-color-on)"};
+    --slider-main-color-on: ${mainSliderColor};
+    --slider-main-color-off: ${mainSliderColorOff};
+    --slider-secondary-color: ${(entityClass.state === "off" || entityClass.state == undefined) ? "var(--slider-secondary-color-off)" : "var(--slider-secondary-color-on)"};
+    --slider-secondary-color-on: ${secondarySliderColor};
+    --slider-secondary-color-off: ${secondarySliderColorOff};
     --slider-radius: ${radius};
     --border: ${border};
     
     --thumb-width: ${thumbWidth};
     --thumb-height: ${thumbHeight};
-    --thumb-color: ${thumbColor};
+    --thumb-color: ${(entityClass.state === "off" || entityClass.state == undefined) ? "var(--thumb-color-off)" : "var(--thumb-color-on)"};
+    --thumb-color-on: ${thumbColor};
+    --thumb-color-off: ${thumbColorOff};
     --thumb-horizontal-padding: ${thumbHorizontalPadding};
     --thumb-vertical-padding: ${thumbVerticalPadding};
 
