@@ -37,14 +37,14 @@ render() {
   // Slider Background Color Variables
   var mainSliderColor = this.config.mainSliderColor ? this.config.mainSliderColor : "var(--accent-color)";
   var secondarySliderColor = this.config.secondarySliderColor ? this.config.secondarySliderColor : "#4d4d4d";
-  var mainSliderColorOff = this.config.mainSliderColor ? this.config.mainSliderColor : "#636363";
-  var secondarySliderColorOff = this.config.secondarySliderColor ? this.config.secondarySliderColor : "#4d4d4d";
+  var mainSliderColorOff = this.config.mainSliderColorOff ? this.config.mainSliderColorOff : "#636363";
+  var secondarySliderColorOff = this.config.secondarySliderColorOff ? this.config.secondarySliderColorOff : "#4d4d4d";
   var border = this.config.border ? this.config.border : "0";
   // Slider Thumb Variables
   var thumbWidth = this.config.thumbWidth ? this.config.thumbWidth : "25px";
   var thumbHeight = this.config.thumbHeight ? this.config.thumbHeight : "80px";
   var thumbColor = this.config.thumbColor ? this.config.thumbColor : "#FFFFFF";
-  var thumbColorOff = this.config.thumbColor ? this.config.thumbColor : "#969696";
+  var thumbColorOff = this.config.thumbColorOff ? this.config.thumbColorOff : "#969696";
   var thumbHorizontalPadding = this.config.thumbHorizontalPadding ? this.config.thumbHorizontalPadding : "10px";
   var thumbVerticalPadding = this.config.thumbVerticalPadding ? this.config.thumbVerticalPadding : "20px";
   var thumbTop = this.config.thumpTop ? this.config.thumpTop : "calc((var(--slider-width) - var(--thumb-height)) / 2)";
