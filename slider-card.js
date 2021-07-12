@@ -22,6 +22,8 @@ render() {
   // Size Variables
   var minValue = this.config.minValue ? this.config.minValue : "0";
   var maxValue = this.config.maxValue ? this.config.maxValue : "100";
+  var minSet = this.config.minSet ? this.config.minSet : "0";
+  var maxSet = this.config.maxSet ? this.config.maxSet : "100";
   var width = this.config.width ? this.config.width : "100%";
   var height = this.config.height ? this.config.height : "50px";
   var radius = this.config.radius ? this.config.radius : "4px";
