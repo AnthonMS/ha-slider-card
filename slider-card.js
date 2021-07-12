@@ -125,12 +125,12 @@ render() {
     --thumb-border-top: ${thumbBorderTop};
     --thumb-border-bottom: ${thumbBorderBotton};
   `;
-  if (isLight) {
+    if (isLight) {
     if (this.config.function == "Warmth") {
       return html`
           <ha-card>
             <div class="slider-container" style="${styleStr}">
-              <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.state === "off" ? 0 : entityClass.attributes.color_temp}" min="${entityClass.attributes.min_mireds}" max="${entityClass.attributes.max_mireds}" step="${step}" @change=${e => this._setWarmth(entityClass, e.target.value)}>
+              <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.state === "off" ? 0 : entityClass.attributes.color_temp}" min="${entityClass.attributes.min_mireds}" max="${entityClass.attributes.max_mireds}" step="${step}" @change=${e => this._setWarmth(entityClass, e.target.value, minSet, maxSet)}>
             </div>
           </ha-card>
       `;
@@ -139,7 +139,7 @@ render() {
       return html`
           <ha-card>
             <div class="slider-container" style="${styleStr}">
-              <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.state === "off" ? 0 : Math.round(entityClass.attributes.brightness/2.55)}" step="${step}" @change=${e => this._setBrightness(entityClass, e.target.value)}>
+              <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.state === "off" ? 0 : Math.round(entityClass.attributes.brightness/2.55)}" step="${step}" @change=${e => this._setBrightness(entityClass, e.target.value, minSet, maxSet)}>
             </div>
           </ha-card>
       `;
@@ -150,7 +150,7 @@ render() {
     return html`
         <ha-card>
           <div class="slider-container" style="${styleStr}">
-            <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.state}" min="${entityClass.attributes.min}" max="${entityClass.attributes.max}" step="${step}" @change=${e => this._setInputNumber(entityClass, e.target.value)}>
+            <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.state}" min="${entityClass.attributes.min}" max="${entityClass.attributes.max}" step="${step}" @change=${e => this._setInputNumber(entityClass, e.target.value, minSet, maxSet)}>
           </div>
         </ha-card>
     `;
@@ -165,7 +165,7 @@ render() {
     return html`
         <ha-card>
           <div class="slider-container" style="${styleStr}">
-            <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${num}" min="${minValue}" max="${maxValue}" step="${step}" @change=${e => this._setMediaVolume(entityClass, e.target.value)}>
+            <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${num}" min="${minValue}" max="${maxValue}" step="${step}" @change=${e => this._setMediaVolume(entityClass, e.target.value, minSet, maxSet)}>
           </div>
         </ha-card>
     `;
@@ -175,7 +175,7 @@ render() {
     return html`
         <ha-card>
           <div class="slider-container" style="${styleStr}">
-            <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.attributes.current_position}" min="${minValue}" max="${maxValue}" step="${step}" @change=${e => this._setCover(entityClass, e.target.value)}>
+            <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.attributes.current_position}" min="${minValue}" max="${maxValue}" step="${step}" @change=${e => this._setCover(entityClass, e.target.value, minSet, maxSet)}>
           </div>
         </ha-card>
     `;
@@ -185,7 +185,7 @@ render() {
     return html`
         <ha-card>
           <div class="slider-container" style="${styleStr}">
-            <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.attributes.percentage}" min="${minValue}" max="${maxValue}" step="${step}" @change=${e => this._setFan(entityClass, e.target.value)}>
+            <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.attributes.percentage}" min="${minValue}" max="${maxValue}" step="${step}" @change=${e => this._setFan(entityClass, e.target.value, minSet, maxSet)}>
           </div>
         </ha-card>
     `;
