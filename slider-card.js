@@ -196,53 +196,83 @@ updated() {}
 
 
 _setFan(entityClass, value, minSet, maxSet) {
+  if (value > maxSet) {
+    var value = maxSet;
+  } else if (value < minSet) {
+    var value = minSet;
+  }
+
   this.hass.callService("fan", "set_percentage", {
       entity_id: entityClass.entity_id,
-      percentage: Math.min(Math.max(value, minSet), maxSet)
+      percentage: value
   });
 }
 
 _setCover(entityClass, value, minSet, maxSet) {
+  if (value > maxSet) {
+    var value = maxSet;
+  } else if (value < minSet) {
+    var value = minSet;
+  }
   // console.log("Setting Cover to: " + value);
   // console.log("From Position: " + entityClass.attributes.current_position);
   this.hass.callService("cover", "set_cover_position", {
       entity_id: entityClass.entity_id,
-      position: Math.min(Math.max(value, minSet), maxSet)
+      position: value
   });
 }
 
 _setMediaVolume(entityClass, value, minSet, maxSet) {
-
-  var changedValue = Math.min(Math.max(value, minSet), maxSet);
-  var pValue = changedValue / 100;
+  if (value > maxSet) {
+    var value = maxSet;
+  } else if (value < minSet) {
+    var value = minSet;
+  }
 
   this.hass.callService("media_player", "volume_set", {
       entity_id: entityClass.entity_id,
-      volume_level: pValue
+      volume_level: value / 100
   });
 }
 
 _setInputNumber(entityClass, number, minSet, maxSet) {
+  if (value > maxSet) {
+    var value = maxSet;
+  } else if (value < minSet) {
+    var value = minSet;
+  }
+
   this.hass.callService("input_number", "set_value", {
       entity_id: entityClass.entity_id,
-      value: Math.min(Math.max(value, minSet), maxSet)
+      value: value
   });
 }
 
 _setBrightness(entityClass, value, minSet, maxSet) {
-  var clampedValue = Math.min(Math.max(value, minSet), maxSet);
+  if (value > maxSet) {
+    var value = maxSet;
+  } else if (value < minSet) {
+    var value = minSet;
+  }
+
   this.hass.callService("homeassistant", "turn_on", {
       entity_id: entityClass.entity_id,
-      brightness: clampedValue * 2.55
+      brightness: value * 2.55
   });
   // console.log("Setting brightness...");
   // console.log(state);
 }
 
 _setWarmth(entityClass, value, minSet, maxSet) {
+  if (value > maxSet) {
+    var value = maxSet;
+  } else if (value < minSet) {
+    var value = minSet;
+  }
+
   this.hass.callService("homeassistant", "turn_on", {
     entity_id: entityClass.entity_id,
-    color_temp: Math.min(Math.max(value, minSet), maxSet)
+    color_temp: value
   });
 }
 
