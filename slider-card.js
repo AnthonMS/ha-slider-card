@@ -20,8 +20,10 @@ constructor() {
 
 render() {
   // Size Variables
-  var minValue = this.config.minValue ? this.config.minValue : "0";
-  var maxValue = this.config.maxValue ? this.config.maxValue : "100";
+  var minBar = this.config.minBar ? this.config.minBar : "0";
+  var maxBar = this.config.maxBar ? this.config.maxBar : "100";
+  var minSet = this.config.minSet ? this.config.minSet : "0";
+  var maxSet = this.config.maxSet ? this.config.maxSet : "100";
   var width = this.config.width ? this.config.width : "100%";
   var height = this.config.height ? this.config.height : "50px";
   var radius = this.config.radius ? this.config.radius : "4px";
@@ -123,12 +125,12 @@ render() {
     --thumb-border-top: ${thumbBorderTop};
     --thumb-border-bottom: ${thumbBorderBotton};
   `;
-  if (isLight) {
+    if (isLight) {
     if (this.config.function == "Warmth") {
       return html`
           <ha-card>
             <div class="slider-container" style="${styleStr}">
-              <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.state === "off" ? 0 : entityClass.attributes.color_temp}" min="${entityClass.attributes.min_mireds}" max="${entityClass.attributes.max_mireds}" step="${step}" @change=${e => this._setWarmth(entityClass, e.target.value)}>
+              <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.state === "off" ? 0 : entityClass.attributes.color_temp}" min="${entityClass.attributes.min_mireds}" max="${entityClass.attributes.max_mireds}" step="${step}" @change=${e => this._setWarmth(entityClass, e.target.value, minSet, maxSet)}>
             </div>
           </ha-card>
       `;
@@ -137,7 +139,7 @@ render() {
       return html`
           <ha-card>
             <div class="slider-container" style="${styleStr}">
-              <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.state === "off" ? 0 : Math.round(entityClass.attributes.brightness/2.55)}" step="${step}" @change=${e => this._setBrightness(entityClass, e.target.value)}>
+              <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.state === "off" ? 0 : Math.round(entityClass.attributes.brightness/2.55)}" step="${step}" @change=${e => this._setBrightness(entityClass, e.target.value, minSet, maxSet)}>
             </div>
           </ha-card>
       `;
@@ -148,25 +150,22 @@ render() {
     return html`
         <ha-card>
           <div class="slider-container" style="${styleStr}">
-            <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.state}" min="${entityClass.attributes.min}" max="${entityClass.attributes.max}" step="${step}" @change=${e => this._setInputNumber(entityClass, e.target.value)}>
+            <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.state}" min="${entityClass.attributes.min}" max="${entityClass.attributes.max}" step="${step}" @change=${e => this._setInputNumber(entityClass, e.target.value, minSet, maxSet)}>
           </div>
         </ha-card>
     `;
   }
 
   if (isMediaPlayer) {
+    var num = 0;
     if (entityClass.attributes.volume_level != undefined) {
-      var numStr = entityClass.attributes.volume_level.toFixed(2);
+      var num = Number(entityClass.attributes.volume_level * 100)
     }
-    else {
-      var numStr = "0";
-    }
-    var num = Number(numStr.replace("0.", ""));
 
     return html`
         <ha-card>
           <div class="slider-container" style="${styleStr}">
-            <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${num}" min="${minValue}" max="${maxValue}" step="${step}" @change=${e => this._setMediaVolume(entityClass, e.target.value)}>
+            <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${num}" min="${minBar}" max="${maxBar}" step="${step}" @change=${e => this._setMediaVolume(entityClass, e.target.value, minSet, maxSet)}>
           </div>
         </ha-card>
     `;
@@ -176,7 +175,7 @@ render() {
     return html`
         <ha-card>
           <div class="slider-container" style="${styleStr}">
-            <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.attributes.current_position}" min="${minValue}" max="${maxValue}" step="${step}" @change=${e => this._setCover(entityClass, e.target.value)}>
+            <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.attributes.current_position}" min="${minBar}" max="${maxBar}" step="${step}" @change=${e => this._setCover(entityClass, e.target.value, minSet, maxSet)}>
           </div>
         </ha-card>
     `;
@@ -186,7 +185,7 @@ render() {
     return html`
         <ha-card>
           <div class="slider-container" style="${styleStr}">
-            <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.attributes.percentage}" min="${minValue}" max="${maxValue}" step="${step}" @change=${e => this._setFan(entityClass, e.target.value)}>
+            <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.attributes.percentage}" min="${minBar}" max="${maxBar}" step="${step}" @change=${e => this._setFan(entityClass, e.target.value, minSet, maxSet)}>
           </div>
         </ha-card>
     `;
@@ -196,14 +195,25 @@ render() {
 updated() {}
 
 
-_setFan(entityClass, value) {
+_setFan(entityClass, value, minSet, maxSet) {
+  if (value > maxSet) {
+    var value = maxSet;
+  } else if (value < minSet) {
+    var value = minSet;
+  }
+
   this.hass.callService("fan", "set_percentage", {
       entity_id: entityClass.entity_id,
       percentage: value
   });
 }
 
-_setCover(entityClass, value) {
+_setCover(entityClass, value, minSet, maxSet) {
+  if (value > maxSet) {
+    var value = maxSet;
+  } else if (value < minSet) {
+    var value = minSet;
+  }
   // console.log("Setting Cover to: " + value);
   // console.log("From Position: " + entityClass.attributes.current_position);
   this.hass.callService("cover", "set_cover_position", {
@@ -212,29 +222,39 @@ _setCover(entityClass, value) {
   });
 }
 
-_setMediaVolume(entityClass, value) {
-  if (value === 100) {
-    var num = 1;
+_setMediaVolume(entityClass, value, minSet, maxSet) {
+  if (value > maxSet) {
+    var value = maxSet;
+  } else if (value < minSet) {
+    var value = minSet;
   }
-  else {
-    var num = Number("0." + value);
-  }
-  
 
   this.hass.callService("media_player", "volume_set", {
       entity_id: entityClass.entity_id,
-      volume_level: num
+      volume_level: value / 100
   });
 }
 
-_setInputNumber(entityClass, number) {
+_setInputNumber(entityClass, number, minSet, maxSet) {
+  if (value > maxSet) {
+    var value = maxSet;
+  } else if (value < minSet) {
+    var value = minSet;
+  }
+
   this.hass.callService("input_number", "set_value", {
       entity_id: entityClass.entity_id,
-      value: number
+      value: value
   });
 }
 
-_setBrightness(entityClass, value) {
+_setBrightness(entityClass, value, minSet, maxSet) {
+  if (value > maxSet) {
+    var value = maxSet;
+  } else if (value < minSet) {
+    var value = minSet;
+  }
+
   this.hass.callService("homeassistant", "turn_on", {
       entity_id: entityClass.entity_id,
       brightness: value * 2.55
@@ -243,7 +263,13 @@ _setBrightness(entityClass, value) {
   // console.log(state);
 }
 
-_setWarmth(entityClass, value) {
+_setWarmth(entityClass, value, minSet, maxSet) {
+  if (value > maxSet) {
+    var value = maxSet;
+  } else if (value < minSet) {
+    var value = minSet;
+  }
+
   this.hass.callService("homeassistant", "turn_on", {
     entity_id: entityClass.entity_id,
     color_temp: value
