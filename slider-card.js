@@ -195,57 +195,54 @@ render() {
 updated() {}
 
 
-_setFan(entityClass, value) {
+_setFan(entityClass, value, minSet, maxSet) {
   this.hass.callService("fan", "set_percentage", {
       entity_id: entityClass.entity_id,
-      percentage: value
+      percentage: Math.min(Math.max(value, minSet), maxSet)
   });
 }
 
-_setCover(entityClass, value) {
+_setCover(entityClass, value, minSet, maxSet) {
   // console.log("Setting Cover to: " + value);
   // console.log("From Position: " + entityClass.attributes.current_position);
   this.hass.callService("cover", "set_cover_position", {
       entity_id: entityClass.entity_id,
-      position: value
+      position: Math.min(Math.max(value, minSet), maxSet)
   });
 }
 
-_setMediaVolume(entityClass, value) {
-  if (value === 100) {
-    var num = 1;
-  }
-  else {
-    var num = Number("0." + value);
-  }
-  
+_setMediaVolume(entityClass, value, minSet, maxSet) {
+
+  var changedValue = Math.min(Math.max(value, minSet), maxSet);
+  var pValue = changedValue / 100;
 
   this.hass.callService("media_player", "volume_set", {
       entity_id: entityClass.entity_id,
-      volume_level: num
+      volume_level: pValue
   });
 }
 
-_setInputNumber(entityClass, number) {
+_setInputNumber(entityClass, number, minSet, maxSet) {
   this.hass.callService("input_number", "set_value", {
       entity_id: entityClass.entity_id,
-      value: number
+      value: Math.min(Math.max(value, minSet), maxSet)
   });
 }
 
-_setBrightness(entityClass, value) {
+_setBrightness(entityClass, value, minSet, maxSet) {
+  var clampedValue = Math.min(Math.max(value, minSet), maxSet);
   this.hass.callService("homeassistant", "turn_on", {
       entity_id: entityClass.entity_id,
-      brightness: value * 2.55
+      brightness: clampedValue * 2.55
   });
   // console.log("Setting brightness...");
   // console.log(state);
 }
 
-_setWarmth(entityClass, value) {
+_setWarmth(entityClass, value, minSet, maxSet) {
   this.hass.callService("homeassistant", "turn_on", {
     entity_id: entityClass.entity_id,
-    color_temp: value
+    color_temp: Math.min(Math.max(value, minSet), maxSet)
   });
 }
 
