@@ -28,8 +28,8 @@ Everything under function in the options table is css styling, so it is possible
 | ---- | ---- | ------- | ----------- |
 | type | string | **Required** | `custom:slider-card` |
 | entity | string | **Required** | `light.living_room` |
-|minValue| int | 0 | Set minimum value slider will display for `media_player`, `fan`, and `cover` entities |
-|maxValue| int | 100 | Set maximum value slider will display for `media_player`, `fan`, and `cover` entities |
+|minBar| int | 0 | Set minimum value slider bar will display for `media_player`, `fan`, and `cover` entities |
+|maxBar| int | 100 | Set maximum value slider bar will display for `media_player`, `fan`, and `cover` entities |
 |minSet| int | 0 | Set minimum value entity can change |
 |maxSet| int | 100 | Set maximum value entity can change |
 | step | string | "1" | Number of steps to take (For input number, if step is not specified, it will use step from attributes.) (For media_player, if step is not specified it will step by 0.01. (It will actually step by 1, but it will convert 27 to 0.27. So if you set a custom step, set it between 0 and 100.)) |
