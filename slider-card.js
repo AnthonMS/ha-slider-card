@@ -157,13 +157,10 @@ render() {
   }
 
   if (isMediaPlayer) {
+    var num = 0;
     if (entityClass.attributes.volume_level != undefined) {
-      var numStr = entityClass.attributes.volume_level.toFixed(2);
+      var num = Number(entityClass.attributes.volume_level * 100)
     }
-    else {
-      var numStr = "0";
-    }
-    var num = Number(numStr.replace("0.", ""));
 
     return html`
         <ha-card>
