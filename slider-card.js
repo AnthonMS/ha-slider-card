@@ -69,6 +69,7 @@ render() {
   var isMediaPlayer= false;
   var isCover = false;
   var isFan = false;
+  var isSwitch = false;
 
   // Check if entity is light or input_number
   if (this.config.entity.includes("light.")) {
@@ -194,6 +195,7 @@ render() {
         </ha-card>
     `;
   }
+
   if (isSwitch) {
     return html`
         <ha-card>
@@ -204,6 +206,7 @@ render() {
     `;
   }
 }
+
 
 updated() {}
 
@@ -306,7 +309,7 @@ _setWarmth(entityClass, value, minSet, maxSet) {
   let elt = this.shadowRoot;
   elt.activeElement.value = value;
 }
-  
+
 _setSwitch(entityClass, value, minSet, maxSet) {
   if (Number(maxSet) <= value) {
     this.hass.callService("homeassistant", "toggle", {
