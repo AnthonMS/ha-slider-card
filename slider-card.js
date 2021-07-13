@@ -70,6 +70,7 @@ render() {
   var isCover = false;
   var isFan = false;
   var isSwitch = false;
+  var isLock = false;
 
   // Check if entity is light or input_number
   if (this.config.entity.includes("light.")) {
@@ -96,15 +97,19 @@ render() {
     isSwitch = true;
     var step = this.config.step ? this.config.step: "1";
   }
+  else if (this.config.entity.includes("lock.")) {
+    isLock = true;
+    var step = this.config.step ? this.config.step: "1";
+  }
   
   var styleStr = `
     --slider-width: ${width};
     --slider-width-inverse: -${width};
     --slider-height: ${height};
-    --slider-main-color: ${(entityClass.state === "off" || entityClass.state == undefined) ? "var(--slider-main-color-off)" : "var(--slider-main-color-on)"};
+    --slider-main-color: ${(entityClass.state === "off" || entityClass.state === "locked" || entityClass.state == undefined) ? "var(--slider-main-color-off)" : "var(--slider-main-color-on)"};
     --slider-main-color-on: ${mainSliderColor};
     --slider-main-color-off: ${mainSliderColorOff};
-    --slider-secondary-color: ${(entityClass.state === "off" || entityClass.state == undefined) ? "var(--slider-secondary-color-off)" : "var(--slider-secondary-color-on)"};
+    --slider-secondary-color: ${(entityClass.state === "off" || entityClass.state === "locked" || entityClass.state == undefined) ? "var(--slider-secondary-color-off)" : "var(--slider-secondary-color-on)"};
     --slider-secondary-color-on: ${secondarySliderColor};
     --slider-secondary-color-off: ${secondarySliderColorOff};
     --slider-radius: ${radius};
@@ -201,6 +206,16 @@ render() {
         <ha-card>
           <div class="slider-container" style="${styleStr}">
             <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${minBar}" min="${minBar}" max="${maxBar}" step="${step}" @change=${e => this._setSwitch(entityClass, e.target.value, minSet, maxSet)}>
+          </div>
+        </ha-card>
+    `;
+  }
+
+  if (isLock) {
+    return html`
+        <ha-card>
+          <div class="slider-container" style="${styleStr}">
+            <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${minBar}" min="${minBar}" max="${maxBar}" step="${step}" @change=${e => this._setLock(entityClass, e.target.value, minSet, maxSet)}>
           </div>
         </ha-card>
     `;
@@ -317,7 +332,18 @@ _setSwitch(entityClass, value, minSet, maxSet) {
     });
   }
   let elt = this.shadowRoot;
-  elt.activeElement.value = 0;
+  elt.activeElement.value = minBar;
+}
+
+_setLock(entityClass, value, minSet, maxSet) {
+  if (Number(maxSet) <= value) {
+    var newLockState = entityClass.state === "locked" ? 'unlock' : 'lock'
+    this.hass.callService("lock", newLockState, {
+        entity_id: entityClass.entity_id
+    });
+  }
+  let elt = this.shadowRoot;
+  elt.activeElement.value = minBar;
 }
 
 _switch(entityClass) {
@@ -335,7 +361,7 @@ setConfig(config) {
     throw new Error("You need to define entity");
   }
 
-  if (!config.entity.includes("input_number.") && !config.entity.includes("light.") && !config.entity.includes("media_player.") && !config.entity.includes("cover.") && !config.entity.includes("fan.") && !config.entity.includes("switch.") ) {
+  if (!config.entity.includes("input_number.") && !config.entity.includes("light.") && !config.entity.includes("media_player.") && !config.entity.includes("cover.") && !config.entity.includes("fan.") && !config.entity.includes("switch.") && !config.entity.includes("lock.") ) {
     throw new Error("Entity has to be a light, input_number, media_player, cover or a fan.");
   }
   
