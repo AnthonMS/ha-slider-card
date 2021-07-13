@@ -91,6 +91,10 @@ render() {
     isFan = true;
     var step = this.config.step ? this.config.step: "1";
   }
+  else if (this.config.entity.includes("switch.")) {
+    isSwitch = true;
+    var step = this.config.step ? this.config.step: "1";
+  }
   
   var styleStr = `
     --slider-width: ${width};
@@ -186,6 +190,15 @@ render() {
         <ha-card>
           <div class="slider-container" style="${styleStr}">
             <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${entityClass.attributes.percentage}" min="${minBar}" max="${maxBar}" step="${step}" @change=${e => this._setFan(entityClass, e.target.value, minSet, maxSet)}>
+          </div>
+        </ha-card>
+    `;
+  }
+  if (isSwitch) {
+    return html`
+        <ha-card>
+          <div class="slider-container" style="${styleStr}">
+            <input name="foo" type="range" class="${entityClass.state}" style="${styleStr}" .value="${minBar}" min="${minBar}" max="${maxBar}" step="${step}" @change=${e => this._setSwitch(entityClass, e.target.value, minSet, maxSet)}>
           </div>
         </ha-card>
     `;
@@ -293,6 +306,16 @@ _setWarmth(entityClass, value, minSet, maxSet) {
   let elt = this.shadowRoot;
   elt.activeElement.value = value;
 }
+  
+_setSwitch(entityClass, value, minSet, maxSet) {
+  if (Number(maxSet) <= value) {
+    this.hass.callService("homeassistant", "toggle", {
+        entity_id: entityClass.entity_id
+    });
+  }
+  let elt = this.shadowRoot;
+  elt.activeElement.value = 0;
+}
 
 _switch(entityClass) {
     this.hass.callService("homeassistant", "toggle", {
@@ -309,7 +332,7 @@ setConfig(config) {
     throw new Error("You need to define entity");
   }
 
-  if (!config.entity.includes("input_number.") && !config.entity.includes("light.") && !config.entity.includes("media_player.") && !config.entity.includes("cover.") && !config.entity.includes("fan.") ) {
+  if (!config.entity.includes("input_number.") && !config.entity.includes("light.") && !config.entity.includes("media_player.") && !config.entity.includes("cover.") && !config.entity.includes("fan.") && !config.entity.includes("switch.") ) {
     throw new Error("Entity has to be a light, input_number, media_player, cover or a fan.");
   }
   
