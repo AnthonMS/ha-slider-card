@@ -243,6 +243,7 @@ _setFan(entityClass, target, minSet, maxSet) {
 }
 
 _setCover(entityClass, target, minSet, maxSet) {
+  var value = target.value;
   if (value > maxSet) {
     var value = maxSet;
   } else if (value < minSet) {
@@ -260,6 +261,7 @@ _setCover(entityClass, target, minSet, maxSet) {
 }
 
 _setMediaVolume(entityClass, target, minSet, maxSet) {
+  var value = target.value;
   if (value > maxSet) {
     var value = maxSet;
   } else if (value < minSet) {
@@ -276,6 +278,7 @@ _setMediaVolume(entityClass, target, minSet, maxSet) {
 }
 
 _setInputNumber(entityClass, number, minSet, maxSet) {
+  var value = target.value;
   if (value > maxSet) {
     var value = maxSet;
   } else if (value < minSet) {
@@ -292,6 +295,7 @@ _setInputNumber(entityClass, number, minSet, maxSet) {
 }
 
 _setBrightness(entityClass, target, minSet, maxSet) {
+  var value = target.value;
   if (value > maxSet) {
     var value = maxSet;
   } else if (value < minSet) {
@@ -310,6 +314,7 @@ _setBrightness(entityClass, target, minSet, maxSet) {
 }
 
 _setWarmth(entityClass, target, minSet, maxSet) {
+  var value = target.value;
   if (value > maxSet) {
     var value = maxSet;
   } else if (value < minSet) {
@@ -326,6 +331,7 @@ _setWarmth(entityClass, target, minSet, maxSet) {
 }
 
 _setSwitch(entityClass, target, minSet, maxSet, minBar, maxBar) {
+  var value = target.value;
   var threshold = Math.min(maxSet,maxBar) //pick lesser of the two
   if (Number(threshold) <= value) {
     this.hass.callService("homeassistant", "toggle", {
@@ -339,6 +345,7 @@ _setSwitch(entityClass, target, minSet, maxSet, minBar, maxBar) {
 }
 
 _setLock(entityClass, target, minSet, maxSet, minBar, maxBar) {
+  var value = target.value;
   var threshold = Math.min(maxSet,maxBar) //pick lesser of the two
   if (Number(threshold) <= value) {
     var newLockState = entityClass.state === "locked" ? 'unlock' : 'lock'
