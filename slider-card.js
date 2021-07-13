@@ -325,26 +325,29 @@ _setWarmth(entityClass, value, minSet, maxSet) {
   elt.activeElement.value = value;
 }
 
-_setSwitch(entityClass, value, minSet, maxSet) {
-  if (Number(maxSet) <= value) {
+_setSwitch(entityClass, value, minSet, maxSet, minBar, maxBar) {
+  var threshold = Math.min(maxSet,maxBar) //pick lesser of the two
+  if (Number(threshold) <= value) {
     this.hass.callService("homeassistant", "toggle", {
         entity_id: entityClass.entity_id
     });
   }
   let elt = this.shadowRoot;
   console.log(this.config.minBar)
-  elt.activeElement.value = Number(minSet);
+
+  elt.activeElement.value = Number(Math.max(minSet, minBar)); //set to highest value
 }
 
-_setLock(entityClass, value, minSet, maxSet) {
-  if (Number(maxSet) <= value) {
+_setLock(entityClass, value, minSet, maxSet, minBar, maxBar) {
+  var threshold = Math.min(maxSet,maxBar) //pick lesser of the two
+  if (Number(threshold) <= value) {
     var newLockState = entityClass.state === "locked" ? 'unlock' : 'lock'
     this.hass.callService("lock", newLockState, {
         entity_id: entityClass.entity_id
     });
   }
   let elt = this.shadowRoot;
-  elt.activeElement.value = Number(minSet);
+  elt.activeElement.value = Number(Math.max(minSet, minBar));
 }
 
 _switch(entityClass) {
