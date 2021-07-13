@@ -226,7 +226,7 @@ render() {
 updated() {}
 
 
-_setFan(entityClass, value, minSet, maxSet) {
+_setFan(entityClass, target, minSet, maxSet) {
   if (value > maxSet) {
     var value = maxSet;
   } else if (value < minSet) {
@@ -242,7 +242,7 @@ _setFan(entityClass, value, minSet, maxSet) {
   elt.activeElement.value = value;
 }
 
-_setCover(entityClass, value, minSet, maxSet) {
+_setCover(entityClass, target, minSet, maxSet) {
   if (value > maxSet) {
     var value = maxSet;
   } else if (value < minSet) {
@@ -259,7 +259,7 @@ _setCover(entityClass, value, minSet, maxSet) {
   elt.activeElement.value = value;
 }
 
-_setMediaVolume(entityClass, value, minSet, maxSet) {
+_setMediaVolume(entityClass, target, minSet, maxSet) {
   if (value > maxSet) {
     var value = maxSet;
   } else if (value < minSet) {
@@ -291,7 +291,7 @@ _setInputNumber(entityClass, number, minSet, maxSet) {
   elt.activeElement.value = value;
 }
 
-_setBrightness(entityClass, value, minSet, maxSet) {
+_setBrightness(entityClass, target, minSet, maxSet) {
   if (value > maxSet) {
     var value = maxSet;
   } else if (value < minSet) {
@@ -309,7 +309,7 @@ _setBrightness(entityClass, value, minSet, maxSet) {
 
 }
 
-_setWarmth(entityClass, value, minSet, maxSet) {
+_setWarmth(entityClass, target, minSet, maxSet) {
   if (value > maxSet) {
     var value = maxSet;
   } else if (value < minSet) {
@@ -325,7 +325,7 @@ _setWarmth(entityClass, value, minSet, maxSet) {
   elt.activeElement.value = value;
 }
 
-_setSwitch(entityClass, value, minSet, maxSet, minBar, maxBar) {
+_setSwitch(entityClass, target, minSet, maxSet, minBar, maxBar) {
   var threshold = Math.min(maxSet,maxBar) //pick lesser of the two
   if (Number(threshold) <= value) {
     this.hass.callService("homeassistant", "toggle", {
@@ -338,7 +338,7 @@ _setSwitch(entityClass, value, minSet, maxSet, minBar, maxBar) {
   elt.activeElement.value = Number(Math.max(minSet, minBar)); //set to highest value
 }
 
-_setLock(entityClass, value, minSet, maxSet, minBar, maxBar) {
+_setLock(entityClass, target, minSet, maxSet, minBar, maxBar) {
   var threshold = Math.min(maxSet,maxBar) //pick lesser of the two
   if (Number(threshold) <= value) {
     var newLockState = entityClass.state === "locked" ? 'unlock' : 'lock'
