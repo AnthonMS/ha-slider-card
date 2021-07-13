@@ -227,6 +227,7 @@ updated() {}
 
 
 _setFan(entityClass, target, minSet, maxSet) {
+  var value = target.value;
   if (value > maxSet) {
     var value = maxSet;
   } else if (value < minSet) {
@@ -238,8 +239,7 @@ _setFan(entityClass, target, minSet, maxSet) {
       percentage: value
   });
 
-  let elt = this.shadowRoot;
-  elt.activeElement.value = value;
+  target.value = value;
 }
 
 _setCover(entityClass, target, minSet, maxSet) {
@@ -256,8 +256,7 @@ _setCover(entityClass, target, minSet, maxSet) {
       position: value
   });
   
-  let elt = this.shadowRoot;
-  elt.activeElement.value = value;
+  target.value = value;
 }
 
 _setMediaVolume(entityClass, target, minSet, maxSet) {
@@ -273,8 +272,7 @@ _setMediaVolume(entityClass, target, minSet, maxSet) {
       volume_level: value / 100
   });
 
-  let elt = this.shadowRoot;
-  elt.activeElement.value = value;
+  target.value = value;
 }
 
 _setInputNumber(entityClass, number, minSet, maxSet) {
@@ -290,8 +288,7 @@ _setInputNumber(entityClass, number, minSet, maxSet) {
       value: value
   });
 
-  let elt = this.shadowRoot;
-  elt.activeElement.value = value;
+  target.value = value;
 }
 
 _setBrightness(entityClass, target, minSet, maxSet) {
@@ -308,8 +305,7 @@ _setBrightness(entityClass, target, minSet, maxSet) {
   });
 
   // console.dir(this)
-  let elt = this.shadowRoot;
-  elt.activeElement.value = value;
+  target.value = value;
 
 }
 
@@ -326,8 +322,7 @@ _setWarmth(entityClass, target, minSet, maxSet) {
     color_temp: value
   });
 
-  let elt = this.shadowRoot;
-  elt.activeElement.value = value;
+  target.value = value;
 }
 
 _setSwitch(entityClass, target, minSet, maxSet, minBar, maxBar) {
@@ -338,10 +333,8 @@ _setSwitch(entityClass, target, minSet, maxSet, minBar, maxBar) {
         entity_id: entityClass.entity_id
     });
   }
-  let elt = this.shadowRoot;
-  console.log(this.config.minBar)
 
-  elt.activeElement.value = Number(Math.max(minSet, minBar)); //set to highest value
+  target.value = Number(Math.max(minSet, minBar));
 }
 
 _setLock(entityClass, target, minSet, maxSet, minBar, maxBar) {
@@ -353,8 +346,8 @@ _setLock(entityClass, target, minSet, maxSet, minBar, maxBar) {
         entity_id: entityClass.entity_id
     });
   }
-  let elt = this.shadowRoot;
-  elt.activeElement.value = Number(Math.max(minSet, minBar));
+
+  target.value = Number(Math.max(minSet, minBar));
 }
 
 _switch(entityClass) {
