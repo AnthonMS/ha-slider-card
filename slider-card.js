@@ -206,6 +206,9 @@ _setFan(entityClass, value, minSet, maxSet) {
       entity_id: entityClass.entity_id,
       percentage: value
   });
+
+  let elt = this.shadowRoot;
+  elt.activeElement.value = value;
 }
 
 _setCover(entityClass, value, minSet, maxSet) {
@@ -220,6 +223,9 @@ _setCover(entityClass, value, minSet, maxSet) {
       entity_id: entityClass.entity_id,
       position: value
   });
+  
+  let elt = this.shadowRoot;
+  elt.activeElement.value = value;
 }
 
 _setMediaVolume(entityClass, value, minSet, maxSet) {
@@ -233,6 +239,9 @@ _setMediaVolume(entityClass, value, minSet, maxSet) {
       entity_id: entityClass.entity_id,
       volume_level: value / 100
   });
+
+  let elt = this.shadowRoot;
+  elt.activeElement.value = value;
 }
 
 _setInputNumber(entityClass, number, minSet, maxSet) {
@@ -246,6 +255,9 @@ _setInputNumber(entityClass, number, minSet, maxSet) {
       entity_id: entityClass.entity_id,
       value: value
   });
+
+  let elt = this.shadowRoot;
+  elt.activeElement.value = value;
 }
 
 _setBrightness(entityClass, value, minSet, maxSet) {
@@ -259,8 +271,11 @@ _setBrightness(entityClass, value, minSet, maxSet) {
       entity_id: entityClass.entity_id,
       brightness: value * 2.55
   });
-  // console.log("Setting brightness...");
-  // console.log(state);
+
+  // console.dir(this)
+  let elt = this.shadowRoot;
+  elt.activeElement.value = value;
+
 }
 
 _setWarmth(entityClass, value, minSet, maxSet) {
@@ -274,6 +289,9 @@ _setWarmth(entityClass, value, minSet, maxSet) {
     entity_id: entityClass.entity_id,
     color_temp: value
   });
+
+  let elt = this.shadowRoot;
+  elt.activeElement.value = value;
 }
 
 _switch(entityClass) {
