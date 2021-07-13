@@ -2,14 +2,15 @@
 
 ## Description
 
-Slider Card is a customizable card for light, input_number & media_player volume_level entity sliders, for the Home Assistant Lovelace frontend.
+Slider Card is a customizable card for light, input_number, covers, fans, switches, locks & media_player volume_level entity sliders, for the Home Assistant Lovelace frontend.
 **Please read the notes at the bottom of this readme, there are some important styling tips, because the padding on the thumb works in mysterious ways (Using border styling)**  
 Everything under function in the options table is css styling, so it is possible to use any of the supported ways of setting styles. For example for width, height and paddings you can use '%', 'px', 'rem' and so on. And the same for colors, you can use hex, rgb and named.
 
 ### Features
-- Customizable slider card for lights, input_numbers, media_players, covers and fans
+- Customizable slider card for lights, input_numbers, media_players, covers, fans, switches, and locks
 - It can handle both brightness and warmth of light
 - It can handle custom min, max and step for input_number
+- It will toggle switches and locks when slid (slide-to-unlock style)
 
 ### Future features (Maybe)
 - Customizable Percentage Text inside slider.
