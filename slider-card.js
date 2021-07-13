@@ -332,7 +332,8 @@ _setSwitch(entityClass, value, minSet, maxSet) {
     });
   }
   let elt = this.shadowRoot;
-  elt.activeElement.value = minBar;
+  console.log(this.config.minBar)
+  elt.activeElement.value = Number(minSet);
 }
 
 _setLock(entityClass, value, minSet, maxSet) {
@@ -343,7 +344,7 @@ _setLock(entityClass, value, minSet, maxSet) {
     });
   }
   let elt = this.shadowRoot;
-  elt.activeElement.value = minBar;
+  elt.activeElement.value = Number(minSet);
 }
 
 _switch(entityClass) {
