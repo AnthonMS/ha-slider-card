@@ -439,7 +439,7 @@ static get styles() {
       .slider-container input[type=range]::-moz-range-thumb {
         width: calc(var(--thumb-width) / 4);
         height: calc(var(--thumb-height) / 2); 
-        box-shadow: -3500px 10px 0 3500px var(--slider-main-color);
+        box-shadow: -3500px 10px 0 3500px var(--slider-main-color), inset 0 0 0 25px var(--thumb-color);
         top: var(--thumb-top);
         cursor: ew-resize;
         border-radius: 0;
