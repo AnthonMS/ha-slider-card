@@ -436,6 +436,22 @@ static get styles() {
           border-bottom: var(--thumb-border-bottom);
       }
 
+      .slider-container input[type=range]::-moz-range-thumb {
+        width: calc(var(--thumb-width) / 4);
+        height: calc(var(--thumb-height) / 2); 
+        box-shadow: -3500px 10px 0 3500px var(--slider-main-color);
+        top: var(--thumb-top);
+        cursor: ew-resize;
+        border-radius: 0;
+        transition: box-shadow 0.2s ease-in-out;
+        position: relative;
+        border-radius: 0;
+        border-right: var(--thumb-border-right);
+        border-left: var(--thumb-border-left);
+        border-top: var(--thumb-border-top);
+        border-bottom: var(--thumb-border-bottom);
+      }
+
       .slider-container input[type="range"]::-webkit-slider-thumb:hover {
           cursor: default;
       }
