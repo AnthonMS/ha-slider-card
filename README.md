@@ -221,6 +221,20 @@ cards:
 
 ![Change Active and Inactive Colors Config](/slider-card-captures/thumb-colors-change.gif)
 
+#### Using a `Switch` or `Lock`
+
+By adjusting the maxSet you can adjust when a release causes the entity to be toggled.
+
+```yaml
+cards:
+  - type: custom:slider-card
+    entity: lock.lock
+    maxSet: 70
+```
+
+In this example the user only needs to slide 70% of the way to activate this lock
+
+![Change Active and Inactive Colors Config](/slider-card-captures/switch-lock-example.gif)
 ### NOTE
 
 When changing the padding of the thumb. If you want for example padding on the sides (horizontal) you will have to triple the width of the thumb itself, this has something to do with the border styling. There is possibly a way around this, if I use some more time on the styling, but for now, this will have to do, since it serves the purpose I need it for. Plus if you just keep this in mind, there should be no trouble. But play around with it. This includes when wanting padding on top/bottom (vertical), you will have to change height of the thumb.
