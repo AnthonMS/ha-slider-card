@@ -224,6 +224,7 @@ cards:
 #### Using a `Switch` or `Lock`
 
 By adjusting the maxSet you can adjust when a release causes the entity to be toggled.
+In this example the user would only need to slide 70% of the way to activate this lock
 
 ```yaml
 cards:
@@ -232,7 +233,7 @@ cards:
     maxSet: 70
 ```
 
-In this example the user only needs to slide 70% of the way to activate this lock
+
 
 ![Change Active and Inactive Colors Config](/slider-card-captures/switch-lock-example.gif)
 ### NOTE
