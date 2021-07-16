@@ -386,6 +386,8 @@ static get styles() {
       .slider-container {
           height: var(--container-height);
           position: relative;
+          overflow: hidden;
+          border-radius: var(--slider-radius);
       }
 
       .slider-container input[type="range"] {
