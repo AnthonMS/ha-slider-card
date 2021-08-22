@@ -1,5 +1,9 @@
 # slider-card
 
+## Breaking changes in latest version!
+
+
+
 ## Description
 
 Slider Card is a customizable card for light, input_number, covers, fans, switches, locks & media_player volume_level entity sliders, for the Home Assistant Lovelace frontend.
