@@ -1,6 +1,6 @@
 # slider-card
 
-## Breaking changes in latest version! Test
+## Breaking changes in latest version!
 
 The card is now named "my-slider". So you'll have to change this in your setup after installing the new version. 
 The new version has made it so the card is not cloud dependant any longer. LitElement is compiled directly into the code now.
