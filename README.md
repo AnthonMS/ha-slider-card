@@ -1,5 +1,11 @@
 # slider-card
 
+## Deprecated!!!
+
+This repo is not being updated anymore. Find the updated cards here: https://github.com/AnthonMS/my-cards
+
+This will be rolled back to have the cloud dependant version of the card.
+
 ## Breaking changes in latest version!
 
 The card is now named "my-slider". So you'll have to change this in your setup after installing the new version. 
