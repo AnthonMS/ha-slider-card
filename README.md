@@ -32,7 +32,7 @@ Everything under function in the options table is css styling, so it is possible
 ## Options
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| type | string | **Required** | `custom:slider-card` |
+| type | string | **Required** | `custom:my-slider` |
 | entity | string | **Required** | `light.living_room` |
 |minBar| int | 0 | Set minimum value slider bar will display for `media_player`, `fan`, and `cover` entities |
 |maxBar| int | 100 | Set maximum value slider bar will display for `media_player`, `fan`, and `cover` entities |
@@ -74,7 +74,7 @@ Add this in config and restart HA.
 lovelace:
   ...
   resources:
-    - url: /hacsfiles/ha-slider-card/slider-card.js
+    - url: /hacsfiles/ha-slider-card/my-slider.js
       type: module
 ```
 
@@ -82,25 +82,25 @@ lovelace:
 
 ### Step 1
 
-Copy `slider-card.js` to `<config directory>/www/slider-card.js`.
+Copy `my-slider.js` from dist to `<config directory>/www/my-slider.js`.
 
 ### Step 2
 
 #### OLD
-Add `slider-card` resource to `ui-lovelace.yaml`.
+Add `my-slider` resource to `ui-lovelace.yaml`.
 
 ```yaml
 resources:
-  - url: /local/slider-card.js
+  - url: /local/my-slider.js
     type: module
 ```
 
 #### NEW
-Add `slider-card` as module through front-end. or if using yaml-mode add `slider-card` resource to `configuration.yaml`.
+Add `my-slider` as module through front-end. or if using yaml-mode add `my-slider` resource to `configuration.yaml`.
 
 ```yaml
 resources:
-  - url: /local/slider-card.js
+  - url: /local/my-slider.js
     type: module
 ```
 
@@ -109,7 +109,7 @@ resources:
 Add a custom card to your `ui-lovelace.yaml`.
 
 ```yaml
-- type: custom:slider-card
+- type: custom:my-slider
   entity: light.example
 ```
 
@@ -119,7 +119,7 @@ Add a custom card to your `ui-lovelace.yaml`.
 
 ```yaml
 cards:
-  - type: custom:slider-card
+  - type: custom:my-slider
     entity: light.example
 ```
 
@@ -127,7 +127,7 @@ cards:
 
 ```yaml
 cards:
-  - type: custom:slider-card
+  - type: custom:my-slider
     entity: light.example
     function: "Warmth"
 ```
@@ -136,13 +136,13 @@ cards:
 
 ```yaml
 cards:
-  - type: custom:slider-card
+  - type: custom:my-slider
     entity: input_number.example
 ```
 
 ```yaml
 cards:
-  - type: custom:slider-card
+  - type: custom:my-slider
     entity: input_number.example
     step: "10"
 ```
@@ -153,7 +153,7 @@ cards:
 
 ```yaml
 cards:
-    - type: custom:slider-card
+    - type: custom:my-slider
       entity: light.dinner_table_light
       height: '30px'
       mainSliderColor: 'green'
@@ -166,7 +166,7 @@ cards:
 
 ```yaml
 cards:
-  - type: custom:slider-card
+  - type: custom:my-slider
     entity: light.dinner_table_light
     height: '30px'
     mainSliderColor: 'blue'
@@ -183,7 +183,7 @@ cards:
 ```yaml
 cards:
 ###########  LEFT SLIDER  ############
-  - type: custom:slider-card
+  - type: custom:my-slider
     entity: light.dinner_table_light
     height: '30px'
     mainSliderColor: 'green'
@@ -195,7 +195,7 @@ cards:
     thumbVerticalPadding: '0px'
 
 ###########  RIGHT SLIDER  ############
-  - type: custom:slider-card
+  - type: custom:my-slider
     entity: light.sofa_light
     height: '30px'
     mainSliderColor: 'blue'
@@ -214,7 +214,7 @@ cards:
 
 ```yaml
 cards:
-  - type: custom:slider-card
+  - type: custom:my-slider
     entity: light.dinner_table_light
     mainColor: red
     mainColorOff: darkred
@@ -233,7 +233,7 @@ In this example the user would only need to slide 70% of the way to activate thi
 
 ```yaml
 cards:
-  - type: custom:slider-card
+  - type: custom:my-slider
     entity: lock.lock
     maxSet: 70
 ```
@@ -261,16 +261,16 @@ For the colors, you can use HEX colors ('#111111'), color names supported by CSS
 2. Install
 3. Add something in the line of this to the configuration:
 ```yaml
-    - url: /hacsfiles/my-button/my-button.js
+    - url: /hacsfiles/ha-slider-card/my-slider.js
       type: module
 ```
 
 ### Manually
-1. Download my-button.js located in dist/ directory
+1. Download my-slider.js located in dist/ directory
 2. Place it in your HA www/ directory
 3. Add something in the line of this to the configuration:
 ```yaml
-    - url: /local/my-button.js
+    - url: /local/my-slider.js
       type: module
 ```
 
@@ -283,6 +283,6 @@ For the colors, you can use HEX colors ('#111111'), color names supported by CSS
 4. Build it by running `npm run build`
 5. Add this to your Home Assistant Configuration (IP is the local IP of the machine you're hosting the card on):
 ```yaml
-    - url: http://<IP>:5000/my-button.js?v=001
+    - url: http://<IP>:5000/my-slider.js?v=001
       type: module
 ```
