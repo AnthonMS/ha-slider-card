@@ -1,6 +1,6 @@
 # slider-card
 
-## Deprecated!!!
+## ARCHIVED!!!
 
 This repo is not being updated anymore. Find the updated cards here: https://github.com/AnthonMS/my-cards
 
