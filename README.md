@@ -60,57 +60,23 @@ Everything under function in the options table is css styling, so it is possible
 | thumbHorizontalPadding | string | 10px | Horizontal padding of the thumb |
 | thumbVerticalPadding | string | 20px | Vertical padding of thumb |
 
-## Installation HACS
-
-### Step 1
-
-Add this repository as a custom Lovelace repository in HACS.
-
-### Step 2
-
-Add this in config and restart HA.
-
+## Installation
+### HACS
+1. Add this repo to HACS
+2. Install
+3. Add something in the line of this to the configuration:
 ```yaml
-lovelace:
-  ...
-  resources:
     - url: /hacsfiles/ha-slider-card/my-slider.js
       type: module
 ```
 
-## Installation Manual
-
-### Step 1
-
-Copy `my-slider.js` from dist to `<config directory>/www/my-slider.js`.
-
-### Step 2
-
-#### OLD
-Add `my-slider` resource to `ui-lovelace.yaml`.
-
+### Manually
+1. Download my-slider.js located in dist/ directory
+2. Place it in your HA www/ directory
+3. Add something in the line of this to the configuration:
 ```yaml
-resources:
-  - url: /local/my-slider.js
-    type: module
-```
-
-#### NEW
-Add `my-slider` as module through front-end. or if using yaml-mode add `my-slider` resource to `configuration.yaml`.
-
-```yaml
-resources:
-  - url: /local/my-slider.js
-    type: module
-```
-
-### Step 3
-
-Add a custom card to your `ui-lovelace.yaml`.
-
-```yaml
-- type: custom:my-slider
-  entity: light.example
+    - url: /local/my-slider.js
+      type: module
 ```
 
 ## Examples
@@ -251,28 +217,6 @@ For the colors, you can use HEX colors ('#111111'), color names supported by CSS
 
 
 
-
-
-
-
-## Install
-### HACS
-1. Add this repo to HACS
-2. Install
-3. Add something in the line of this to the configuration:
-```yaml
-    - url: /hacsfiles/ha-slider-card/my-slider.js
-      type: module
-```
-
-### Manually
-1. Download my-slider.js located in dist/ directory
-2. Place it in your HA www/ directory
-3. Add something in the line of this to the configuration:
-```yaml
-    - url: /local/my-slider.js
-      type: module
-```
 
 
 ## Setup Dev Environment
